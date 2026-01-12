@@ -7,6 +7,7 @@
 <p align="center">
     <a href="https://github.com/astral-sh/uv"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json" alt="uv"></a>
     <a href="https://github.com/astral-sh/ty"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ty/main/assets/badge/v0.json" alt="ty"></a>
+    <a href="https://pypi.org/project/agent-core-toolkit/"><img src="https://img.shields.io/pypi/v/agent-core-toolkit" alt="PyPI"></a>
     <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
 </p>
 
@@ -14,6 +15,20 @@ Production-ready components for building AI agents, optimized across LLMs and pr
 
 > [!NOTE]
 > This library is in early development and subject to change.
+
+
+## Getting Started
+
+### Installation
+
+```bash
+# With uv.
+uv add agent-core-toolkit
+
+# With pip.
+pip install agent-core-toolkit
+```
+
 
 ## Usage
 
