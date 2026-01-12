@@ -10,7 +10,7 @@
     <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
 </p>
 
-Production-ready components for building AI agents, optimized across LLMs and providers. Uses [InteropRouter](https://github.com/DavidKoleczek/interop-router) for a unified model interface.
+Production-ready components for building AI agents, optimized across LLMs and providers. Uses [InteropRouter](https://github.com/DavidKoleczek/interop-router) as a unified AI model provider interface.
 
 > [!NOTE]
 > This library is in early development and subject to change.
