@@ -7,6 +7,9 @@
 - Do not run the e2e/integration tests automatically unless asked since they take a while.
 - Don't generate characters that a user could not type on a standard keyboard like fancy arrows.
 - Anything is possible. Do not blame external factors after something doesn't work on the first try. Instead, investigate and test assumptions through debugging through first principles.
+- When writing documentation
+  - Keep it very concise
+  - No emojis or em dashes.
 
 # Python Development Instructions
 - `ty` by Astral is used for type checking. Always add appropriate type hints such that the code would pass ty's type check.
@@ -31,9 +34,14 @@ print(render("Hello, {{ you }}!", you="World"))
   - `openai`: Key files stem from `.venv/lib/python3.11/site-packages/openai/resources` and `.venv/lib/python3.11/site-packages/openai/types`
   - `anthropic`: Key files stem from `.venv/lib/python3.11/site-packages/anthropic/resources/messages/messages.py`
 
-# Documentation Instructions
-- Keep it very concise
-- No emojis or em dashes.
+# Dependency Context
+- For libraries that are new or change frequently, you must refer to their official documentation or source code.
+- There is a select set of repos cloned that constitute the dependencies for this project at `ai_working`. You must explore it directly when needed. It can be updated through the Claude command `/setup-reference-repos`  in this project.
+  - `interop-router`
+  - `openai-python`
+  - `anthropic-sdk-python`
+  - `python-genai` - Google Gen AI SDK
+- When looking for something specific that might take a while, use a sub-agent to find it. Tell the sub-agent return the location (paths) of what is found so it can be referenced easily later.
 
 # Key Files
 

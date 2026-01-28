@@ -14,5 +14,6 @@
     },
     "python.languageServer": "None",
     "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true
+    "python.testing.pytestEnabled": true,
+    "markdown.extension.orderedList.marker": "one"
 }
