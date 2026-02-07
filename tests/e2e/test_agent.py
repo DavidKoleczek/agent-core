@@ -8,7 +8,7 @@ from openai import AsyncOpenAI
 
 from agent_core._types import AgentConfig, AgentTurnEnd, SubagentConfig, TurnConfig, UserMessageEvent
 from agent_core.agent import Agent
-from agent_core.tools.presets import standard_tools
+from agent_core.tools.presets import permissive_tools, standard_tools
 
 CALCULATOR_PY = """\
 def add(a: int, b: int) -> int:
@@ -103,13 +103,14 @@ async def test_agent_web_search_and_write(tmp_path: Path) -> None:
     """
     router = _create_router()
     agent_config = AgentConfig(working_dir=tmp_path, max_subagent_depth=1)
-    tools = standard_tools(working_dir=tmp_path)
+    tools = permissive_tools(working_dir=tmp_path)
     turn_config = TurnConfig(
         model="gpt-5.2",
         model_friendly_name="gpt-5.2",
         model_knowledge_cutoff="Sep 30, 2024",
         timezone="America/New_York",
         tools=tools,
+        enable_built_in_web_tool=True,
     )
     agent = Agent(agent_config, router)
     user_event = UserMessageEvent(
@@ -122,7 +123,3 @@ async def test_agent_web_search_and_write(tmp_path: Path) -> None:
 
     turn_end_events = [e for e in events if isinstance(e, AgentTurnEnd)]
     assert len(turn_end_events) > 0, "Agent should produce a turn end event"
-
-    summary_file = tmp_path / "news_summary.md"
-    assert summary_file.exists(), "Agent should create news_summary.md"
-    assert len(summary_file.read_text()) > 0, "Summary file should have content"

@@ -6,10 +6,12 @@ Follow these steps to clone repos of key dependencies for ai context.
    - `ai_working/openai-python`
    - `ai_working/anthropic-sdk-python`
    - `ai_working/python-genai`
+   - `ai_working/crawl4ai`
 1. Clone each of the repos with the following template in parallel: `git clone --depth 1 --single-branch <repo-url> <local-path>`
    - `interop-router`: https://github.com/DavidKoleczek/interop-router.git
    - `openai-python`: https://github.com/openai/openai-python.git
-   - `python-genai`: https://github.com/google-gemini/gemini-api-quickstart.git
+   - `python-genai`: https://github.com/googleapis/python-genai.git
    - `anthropic-sdk-python`: https://github.com/anthropics/anthropic-sdk-python.git
+   - `crawl4ai`: https://github.com/unclecode/crawl4ai.git
 1. Check the AGENTS.md to see if each of the repos being cloned is mentioned there. If any are missing, add them without any notes.
 1. Briefly summarize what was done.

@@ -29,6 +29,17 @@ uv add agent-core-toolkit
 pip install agent-core-toolkit
 ```
 
+### Optional Dependencies
+
+For the web fetch tool:
+
+```bash
+uv add agent-core-toolkit[web]
+
+# Run crawl4ai post-installation setup
+crawl4ai-setup
+```
+
 
 ## Usage
 

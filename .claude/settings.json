@@ -1,12 +1,20 @@
 {
   "permissions": {
     "allow": [
+      "mcp__ide__getDiagnostics",
       "WebFetch",
       "WebSearch",
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(xargs:*)",
+      "Bash(git clone:*)",
+      "Bash(uv build:*)",
+      "Bash(uv sync:*)",
+      "Bash(uv run ruff format:*)",
+      "Bash(uv run ruff check:*)",
       "Bash(uv run ty:*)",
-      "Bash(uv run ruff:*)",
-      "mcp__ide__getDiagnostics",
-      "Bash(git clone:*)"
+      "Bash(gh release list:*)",
+      "Bash(gh release view:*)"
     ]
   },
   "hooks": {
