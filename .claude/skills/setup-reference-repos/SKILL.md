@@ -1,6 +1,13 @@
+---
+name: setup-reference-repos
+description: Run this to set up reference repositories for AI usage.
+disable-model-invocation: true
+---
+
 Follow these steps to clone repos of key dependencies for ai context.
+
 1. Read the `pyproject.toml` to understand which versions are being used.
-1.  Create directory: Ensure `ai_working/` exists.
+1. Create directory: Ensure `ai_working/` exists.
 1. Check for existing repos: If any of these directories exist in `ai_working/`, delete them completely before proceeding:
    - `ai_working/interop-router`
    - `ai_working/openai-python`

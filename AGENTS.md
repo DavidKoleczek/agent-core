@@ -35,6 +35,7 @@ print(render("Hello, {{ you }}!", you="World"))
   - `interop-router`: Start at `.venv/lib/python3.11/site-packages/interop_router/router.py` and `.venv/lib/python3.11/site-packages/interop_router/types.py`
   - `openai`: Key files stem from `.venv/lib/python3.11/site-packages/openai/resources` and `.venv/lib/python3.11/site-packages/openai/types`
   - `anthropic`: Key files stem from `.venv/lib/python3.11/site-packages/anthropic/resources/messages/messages.py`
+- Do not manually run checks like `uv run ruff format` or `uv run pytest`. They will either be run automatically after code changes or user triggered since they may take a while.
 
 # Dependency Context
 - For libraries that are new or change frequently, you must refer to their official documentation or source code.
