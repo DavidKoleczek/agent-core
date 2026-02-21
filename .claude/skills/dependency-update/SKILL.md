@@ -10,6 +10,8 @@ The process to go through is:
 1. Notice how we do versioning. We make sure that we do not auto upgrade to the major version. For example, "openai[aiohttp]>=2.9,<3.0", means we will never upgrade to v3.x. You will just be updating minor versions. Note that for dev dependencies we don't need to pin to be less than the major version. Additionally, do not touch uv_build or anything outside `dependencies` or `[dependency-groups]`
 2. For each dependency, go to its pypi release history site. For example, for the openai package that is: https://pypi.org/project/openai/#history Get the latest release version.
 3. Now bump the dependency in pyproject.toml. For example, if the current version in the pyproject.toml is `>=1.05,<2.0`, but on Pypi the latest version is 1.11, change the dependency to `>=1.11,<2.0`
+   - Version format: use only major.minor in the minimum bound (no patch), e.g. `>=1.11,<2.0` not `>=1.11.3,<2.0`.
+   - Some packages may be intentionally exact-pinned with `==` (e.g. `markitdown==0.1.5`) or have stricter version requirements. Do not update those.
 4. If you notice a major version upgrade (ex v2 to v3), let the user know of each of those cases, but do not make the change yourself.
 5. Make sure all the checks still pass by running `uv run ruff format && uv run ruff check --fix && uv run ty check` from the root.
 6. Run `uv sync --all-extras --all-groups` to update the lock file.
