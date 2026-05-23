@@ -14,6 +14,7 @@ from interop_router.types import ChatMessage
 from liquid import render
 from openai.types.responses import EasyInputMessageParam, WebSearchToolParam
 from openai.types.responses.response_input_item_param import FunctionCallOutput
+from openai.types.responses.tool_param import ToolParam
 
 from agent_core._types import (
     AgentChatHistory,
@@ -135,7 +136,7 @@ class Agent:
             )
 
             # Collect tool definitions from all tools
-            request_tools = [defn for tool in turn_config.tools for defn in tool.TOOLS.values()]
+            request_tools: list[ToolParam] = [defn for tool in turn_config.tools for defn in tool.TOOLS.values()]
             if task_tool is not None:
                 request_tools.extend(task_tool.TOOLS.values())
 
@@ -231,7 +232,7 @@ class Agent:
         self, msg: ChatMessage, task_tool: TaskTool | None, tool_by_name: dict[str, Tool]
     ) -> ConstraintPolicy:
         name = msg.message.get("name", "")
-        arguments = json.loads(msg.message.get("arguments", "{}"))
+        arguments = json.loads(str(msg.message.get("arguments", "{}")))
 
         # Check if it's a task tool call
         if task_tool is not None and name in task_tool.TOOLS:
@@ -298,9 +299,9 @@ class Agent:
                 needs_approval = msg.metadata.get("permission_status") == "pending"
                 events.append(
                     AgentToolCallEvent(
-                        call_id=msg.message.get("call_id", ""),
-                        name=msg.message.get("name", ""),
-                        arguments=msg.message.get("arguments", ""),
+                        call_id=str(msg.message.get("call_id", "")),
+                        name=str(msg.message.get("name", "")),
+                        arguments=str(msg.message.get("arguments", "")),
                         needs_approval=needs_approval,
                         agent_id=self.agent_id,
                         agent_name=self._agent_name,
@@ -318,7 +319,7 @@ class Agent:
             if msg.message.get("type") != "function_call":
                 continue
 
-            call_id = msg.message.get("call_id", "")
+            call_id = str(msg.message.get("call_id", ""))
             if self._has_corresponding_output(call_id):
                 continue
 
@@ -326,11 +327,11 @@ class Agent:
             if status not in ("approved", "denied"):
                 continue
 
-            name = msg.message.get("name", "")
+            name = str(msg.message.get("name", ""))
             if status == "denied":
                 output = "The execution of this tool was denied by the user"
             else:
-                arguments = json.loads(msg.message.get("arguments", "{}"))
+                arguments = json.loads(str(msg.message.get("arguments", "{}")))
                 output = "Default output. This is indicative of an unknown error in executing the tool."
                 # The task tool gets special handling since it can yield multiple events
                 if task_tool and name == task_tool.TOOL_NAME:

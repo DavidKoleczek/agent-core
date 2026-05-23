@@ -86,7 +86,7 @@ prek install
 To update dependencies (updates the lock file):
 
 ```bash
-uv sync --all-extras --all-groups
+uv sync -U --all-extras --all-groups
 ```
 
 Run formatting, linting, type checking, and tests in one command:
